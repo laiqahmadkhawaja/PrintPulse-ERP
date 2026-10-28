@@ -43,29 +43,16 @@ if (!in_array($currentPage, $publicPages)) {
     </a>
 
     <div class="nav-actions">
-      <!-- Active Business Identity / Switcher -->
-      <?php if (($current_user['role'] ?? '') === 'platform_admin' && count($user_businesses) > 1): ?>
-        <div class="business-badge" title="<?php echo $is_rtl ? 'ساس ایڈمن: بزنس تبدیل کریں' : 'SaaS Administrator: Switch active business context'; ?>">
-          <span>🏢</span>
-          <select id="globalBusinessSwitcher" class="form-control" style="border:none; background:transparent; font-weight:700; color:var(--primary-dark); cursor:pointer;">
-            <?php foreach ($user_businesses as $b): ?>
-              <option value="<?php echo $b['id']; ?>" <?php echo ($b['id'] == ($current_business['id'] ?? 0)) ? 'selected' : ''; ?>>
-                <?php echo h($b['name']); ?> (<?php echo h($b['city']); ?>)
-              </option>
-            <?php endforeach; ?>
-          </select>
-        </div>
-      <?php else: ?>
-        <div class="business-badge" style="cursor:default;" title="<?php echo h($current_business['name'] ?? ''); ?>">
-          <span>🏢</span>
-          <span style="font-weight:700; color:var(--primary-dark); font-size:13.5px; white-space:nowrap;">
-            <?php echo h($current_business['name'] ?? ''); ?>
-            <?php if (!empty($current_business['city'])): ?>
-              <span style="font-weight:400; color:var(--text-muted); font-size:12px;">(<?php echo h($current_business['city']); ?>)</span>
-            <?php endif; ?>
-          </span>
-        </div>
-      <?php endif; ?>
+      <!-- Active Business Identity -->
+      <div class="business-badge" style="cursor:default;" title="<?php echo h($current_business['name'] ?? ''); ?>">
+        <span>🏢</span>
+        <span style="font-weight:700; color:var(--primary-dark); font-size:13.5px; white-space:nowrap;">
+          <?php echo h($current_business['name'] ?? ''); ?>
+          <?php if (!empty($current_business['city'])): ?>
+            <span style="font-weight:400; color:var(--text-muted); font-size:12px;">(<?php echo h($current_business['city']); ?>)</span>
+          <?php endif; ?>
+        </span>
+      </div>
 
       <!-- Language Switcher -->
       <?php if ($current_lang === 'en'): ?>

@@ -13,7 +13,7 @@ $sql = "
     SELECT 
         ii.description,
         p.id AS product_id,
-        p.product_code,
+        p.code_or_barcode AS product_code,
         p.product_type,
         COALESCE(cat.name, 'Services & Custom Items') AS category_name,
         COUNT(DISTINCT inv.id) AS invoices_count,
@@ -35,7 +35,7 @@ if ($search !== '') {
     $params[] = "%{$search}%";
 }
 
-$sql .= " GROUP BY ii.description, p.id, p.product_code, p.product_type, p.purchase_price, cat.name
+$sql .= " GROUP BY ii.description, p.id, p.code_or_barcode, p.product_type, p.purchase_price, cat.name
           ORDER BY total_revenue DESC";
 
 $stmt = $pdo->prepare($sql);
