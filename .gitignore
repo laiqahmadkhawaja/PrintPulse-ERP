@@ -1,0 +1,15 @@
+# Environment & System files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+
+# Database dumps
+backups/*.sql
+backups/*.gz
+!backups/.gitkeep
+
+# Uploaded business assets (keep default demo files if needed, ignore transient uploads)
+uploads/logos/*
+!uploads/logos/.gitkeep

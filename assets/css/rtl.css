@@ -1,0 +1,102 @@
+/**
+ * PrintPulse ERP - Urdu RTL & Nastaliq Typography Stylesheet
+ * Optimized to prevent clipping of ascenders/descenders, overlap, or line glitches
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap');
+
+html[dir="rtl"], body[dir="rtl"], [dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, Arial, sans-serif;
+  line-height: 1.95;
+  letter-spacing: 0.2px;
+}
+
+/* Headings in Urdu */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[dir="rtl"] .page-title, [dir="rtl"] .card-header {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', sans-serif;
+  line-height: 2.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Form Controls in Urdu */
+[dir="rtl"] .form-control,
+[dir="rtl"] select.form-control,
+[dir="rtl"] textarea.form-control {
+  text-align: right;
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', Tahoma, sans-serif;
+  line-height: 1.85;
+  padding: 8px 14px;
+  font-size: 14.5px;
+}
+
+/* Table Alignments & Line Heights */
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+  line-height: 1.85;
+  padding: 10px 14px;
+}
+
+[dir="rtl"] .table th:first-child,
+[dir="rtl"] .table td:first-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+[dir="rtl"] .table th:last-child,
+[dir="rtl"] .table td:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Buttons in Urdu */
+[dir="rtl"] .btn {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', sans-serif;
+  line-height: 1.85;
+  padding: 6px 16px 8px 16px;
+  font-size: 13.5px;
+}
+
+/* Navigation items flipped */
+[dir="rtl"] .navbar-top {
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav-menu {
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav-dropdown {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+
+[dir="rtl"] .autocomplete-dropdown {
+  right: 0;
+  left: 0;
+  text-align: right;
+}
+
+[dir="rtl"] .stat-card {
+  flex-direction: row;
+}
+
+[dir="rtl"] .stat-value {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  direction: ltr;
+  display: inline-block;
+  text-align: right;
+}
+
+/* Invoices Print Urdu normalization */
+@media print {
+  [dir="rtl"] .invoice-container {
+    direction: rtl;
+    text-align: right;
+  }
+}

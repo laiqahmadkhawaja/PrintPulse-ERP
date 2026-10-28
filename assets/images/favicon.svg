@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="swoosh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bgGrad)" />
+  <!-- Printer icon inside -->
+  <rect x="14" y="26" width="36" height="20" rx="4" fill="#ffffff" />
+  <path d="M 20 26 L 20 12 L 44 12 L 44 26 Z" fill="#94a3b8" />
+  <rect x="19" y="36" width="26" height="18" rx="2" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="23" y1="42" x2="41" y2="42" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" />
+  <line x1="23" y1="47" x2="36" y2="47" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" />
+  <!-- Pulse spark -->
+  <path d="M 8 36 Q 20 18, 40 32 T 58 22" fill="none" stroke="url(#swoosh)" stroke-width="3" stroke-linecap="round" />
+  <circle cx="58" cy="22" r="3" fill="#fbbf24" />
+</svg>

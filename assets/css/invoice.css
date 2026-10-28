@@ -1,0 +1,1016 @@
+/**
+ * PrintPulse ERP - Dynamic Invoice Print Stylesheet
+ * Beautiful Modern Executive Invoices (A5 & A4) & Dedicated Authentic POS Thermal Receipts (80mm)
+ */
+
+:root {
+  --invoice-font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --thermal-font: 'Consolas', 'Courier New', 'Lucida Console', monospace;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --wm-opacity: 0.05;
+  --wm-rotation: -25deg;
+}
+
+/* ============================================================== */
+/* Interactive On-Screen Toolbar                                  */
+/* ============================================================== */
+.print-actions-bar {
+  background: var(--slate-900);
+  color: #ffffff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-family: var(--invoice-font);
+}
+
+.bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bar-back-link {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: color 0.15s ease;
+}
+
+.bar-back-link:hover {
+  color: #ffffff;
+}
+
+.bar-inv-meta {
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-format-label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-right: 4px;
+}
+
+.btn-format-pill {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #cbd5e1;
+  background: #1e293b;
+  border: 1px solid #334155;
+  transition: all 0.15s ease;
+}
+
+.btn-format-pill:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.btn-format-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.btn-print-action {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-print-action:hover {
+  background: #059669;
+}
+
+/* Screen Background Preview */
+.invoice-preview-screen {
+  background: #334155;
+  padding: 30px 15px;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* ============================================================== */
+/* MODERN EXECUTIVE INVOICE (A5 & A4)                             */
+/* ============================================================== */
+.invoice-sheet.executive-format {
+  background: #ffffff;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: var(--slate-900);
+  font-family: var(--invoice-font);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.format-A5 {
+  width: 148mm;
+  min-height: 210mm;
+  padding: 8mm 9mm;
+}
+
+.format-A4 {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 14mm 14mm;
+}
+
+/* Watermark positioned directly behind table */
+.exec-table-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--wm-rotation));
+  font-size: 3.4rem;
+  font-weight: 900;
+  color: #000000;
+  opacity: var(--wm-opacity);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Custom Logo */
+.exec-custom-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exec-brand-logo-img {
+  max-height: 44px;
+  max-width: 125px;
+  object-fit: contain;
+}
+
+/* Normalized Proportions for A5 Invoice */
+.format-A5 .exec-business-name {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+
+.format-A5 .exec-business-sub {
+  font-size: 8.5px;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.format-A5 .exec-biz-details {
+  font-size: 9.5px;
+  line-height: 1.35;
+  margin-top: 3px;
+}
+
+.format-A5 .exec-brand-logo-img {
+  max-height: 38px;
+  max-width: 105px;
+}
+
+.format-A5 .exec-logo-icon {
+  padding: 4px;
+}
+
+.format-A5 .exec-logo-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.format-A5 .exec-inv-badge-title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.format-A5 .exec-inv-number {
+  font-size: 11.5px;
+  padding: 2px 8px;
+}
+
+.format-A5 .exec-status-pill {
+  font-size: 9px;
+  padding: 2px 8px;
+  margin-top: 3px;
+}
+
+.format-A5 .exec-date-row {
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.format-A5 .exec-bill-card {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.format-A5 .bill-section-title {
+  font-size: 9px;
+  margin-bottom: 2px;
+}
+
+.format-A5 .customer-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.format-A5 .customer-sub-detail {
+  font-size: 10px;
+}
+
+.format-A5 .meta-kv-grid {
+  font-size: 10px;
+  row-gap: 2px;
+}
+
+.format-A5 .exec-table th {
+  padding: 6px 8px;
+  font-size: 9.5px;
+}
+
+.format-A5 .exec-table td {
+  padding: 6px 8px;
+  font-size: 11.5px;
+}
+
+.format-A5 .item-title {
+  font-size: 11.5px;
+}
+
+.format-A5 .exec-table-watermark {
+  font-size: 2.6rem;
+  letter-spacing: 1.5px;
+}
+
+.format-A5 .exec-summary-section {
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.format-A5 .exec-terms-box {
+  padding: 6px 8px;
+}
+
+.format-A5 .terms-title {
+  font-size: 9px;
+}
+
+.format-A5 .terms-body {
+  font-size: 8.5px;
+  line-height: 1.25;
+}
+
+.format-A5 .exec-bank-box {
+  padding: 5px 7px;
+  font-size: 8.5px;
+}
+
+.format-A5 .exec-signatures-block {
+  margin-top: 10px;
+  padding-top: 4px;
+}
+
+.format-A5 .sig-lbl {
+  font-size: 8.5px;
+}
+
+.format-A5 .exec-totals-pane {
+  min-width: 155px;
+}
+
+.format-A5 .t-row {
+  padding: 4px 8px;
+  font-size: 10.5px;
+}
+
+.format-A5 .t-row.grand-total {
+  padding: 5px 8px;
+}
+
+.format-A5 .t-row.grand-total .t-lbl {
+  font-size: 10.5px;
+}
+
+.format-A5 .t-row.grand-total .t-val {
+  font-size: 12.5px;
+}
+
+.format-A5 .exec-footer-bar {
+  margin-top: 8px;
+  padding-top: 6px;
+  font-size: 8.5px;
+}
+
+/* Header */
+.exec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  border-bottom: 2px solid var(--slate-100);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.exec-header-brand {
+  max-width: 60%;
+}
+
+.exec-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.exec-logo-icon {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exec-business-name {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--slate-900);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+
+.format-A4 .exec-business-name {
+  font-size: 24px;
+}
+
+.exec-business-sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.8px;
+  margin-top: 2px;
+}
+
+.exec-biz-details {
+  font-size: 11px;
+  color: var(--slate-600);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.exec-detail-line {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Header Meta & Badge */
+.exec-header-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.exec-inv-badge-title {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--slate-900);
+  line-height: 1;
+}
+
+.exec-inv-number {
+  margin-top: 4px;
+  background: #f1f5f9;
+  border: 1px solid var(--slate-200);
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--slate-800);
+  display: inline-block;
+}
+
+.exec-inv-number .num-lbl {
+  color: var(--primary);
+  margin-right: 2px;
+}
+
+.exec-status-pill {
+  margin-top: 6px;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status-paid {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-partial {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.status-unpaid {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.exec-date-row {
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--slate-600);
+}
+
+.exec-date-row .date-val {
+  font-weight: 700;
+  color: var(--slate-800);
+  margin-left: 4px;
+}
+
+/* Customer Card */
+.exec-bill-card {
+  position: relative;
+  z-index: 2;
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.bill-col {
+  flex: 1;
+}
+
+.bill-section-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--slate-600);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.customer-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--slate-900);
+  line-height: 1.25;
+}
+
+.customer-sub-detail {
+  font-size: 11.5px;
+  color: var(--slate-600);
+  margin-top: 2px;
+}
+
+.meta-kv-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 3px;
+  font-size: 11.5px;
+}
+
+.meta-k {
+  color: var(--slate-600);
+  font-weight: 500;
+}
+
+.meta-v {
+  color: var(--slate-800);
+  text-align: right;
+}
+
+.tag-type {
+  background: #e2e8f0;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--slate-700);
+}
+
+/* Executive Items Table */
+.exec-table-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 12px;
+  flex: 1;
+  min-height: 160px;
+}
+
+.exec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.exec-table thead tr {
+  background: var(--slate-900);
+  color: #ffffff;
+}
+
+.exec-table th {
+  padding: 7px 10px;
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.exec-table th.col-num { width: 32px; text-align: center; }
+.exec-table th.col-desc { text-align: left; }
+.exec-table th.col-qty { width: 45px; text-align: center; }
+.exec-table th.col-price { width: 85px; text-align: right; }
+.exec-table th.col-total { width: 95px; text-align: right; }
+
+.exec-table tbody tr {
+  border-bottom: 1px solid var(--slate-200);
+  background: transparent;
+}
+
+.exec-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.5);
+}
+
+.exec-table td {
+  padding: 7px 10px;
+  color: var(--slate-800);
+  vertical-align: middle;
+  background: transparent;
+}
+
+.exec-table td.col-num { text-align: center; font-weight: 600; color: var(--slate-600); }
+.exec-table td.col-qty { text-align: center; font-weight: 600; }
+.exec-table td.col-price { text-align: right; font-variant-numeric: tabular-nums; }
+.exec-table td.col-total { text-align: right; font-weight: 700; color: var(--slate-900); font-variant-numeric: tabular-nums; }
+
+.item-title {
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.item-serial {
+  font-size: 10px;
+  color: var(--slate-600);
+  margin-top: 1px;
+}
+
+/* Bottom Summary Section */
+.exec-summary-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.exec-notes-pane {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.exec-terms-box {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.terms-title {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--slate-700);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.terms-body {
+  font-size: 10px;
+  color: var(--slate-600);
+  line-height: 1.35;
+}
+
+.exec-signatures-block {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 8px;
+}
+
+.sig-col {
+  flex: 1;
+  text-align: center;
+}
+
+.sig-line {
+  border-bottom: 1px dashed var(--slate-600);
+  height: 1px;
+  margin-bottom: 4px;
+}
+
+.sig-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--slate-600);
+}
+
+/* Financial Totals Card */
+.exec-totals-pane {
+  flex: 0.9;
+  min-width: 170px;
+}
+
+.exec-totals-card {
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.t-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.t-row .t-lbl {
+  color: var(--slate-600);
+  font-weight: 500;
+}
+
+.t-row .t-val {
+  font-weight: 700;
+  color: var(--slate-800);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-row.discount .t-val {
+  color: #dc2626;
+}
+
+.t-row.grand-total {
+  background: var(--slate-900);
+  color: #ffffff;
+  padding: 7px 10px;
+  border-bottom: none;
+}
+
+.t-row.grand-total .t-lbl {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+}
+
+.t-row.grand-total .t-val {
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.t-row.paid {
+  background: #fafbfc;
+}
+
+.t-row.balance {
+  padding: 6px 10px;
+}
+
+.t-row.balance.has-balance {
+  background: #fef2f2;
+}
+
+.t-row.balance.has-balance .t-val {
+  color: #dc2626;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.t-row.balance.zero-balance {
+  background: #ecfdf5;
+}
+
+.t-row.balance.zero-balance .t-val {
+  color: #059669;
+  font-weight: 800;
+}
+
+/* Footer Bar */
+.exec-footer-bar {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--slate-200);
+  margin-top: 14px;
+  padding-top: 8px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.footer-thankyou {
+  font-weight: 800;
+  color: var(--slate-800);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.footer-meta {
+  color: var(--slate-600);
+}
+
+/* ============================================================== */
+/* DEDICATED AUTHENTIC 80MM POS THERMAL RECEIPT                   */
+/* ============================================================== */
+.thermal-receipt-sheet {
+  background: #ffffff;
+  width: 78mm;
+  max-width: 78mm;
+  padding: 5mm 4mm;
+  box-sizing: border-box;
+  font-family: var(--thermal-font);
+  color: #000000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 11px;
+  line-height: 1.35;
+  margin: 0 auto;
+}
+
+.thermal-header {
+  text-align: center;
+}
+
+.thermal-biz-title {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+
+.thermal-biz-sub {
+  font-size: 9.5px;
+  font-weight: 700;
+  margin: 2px 0;
+  letter-spacing: 0.5px;
+}
+
+.thermal-biz-contact {
+  font-size: 10px;
+  margin-top: 3px;
+  line-height: 1.25;
+}
+
+.thermal-divider-dashed {
+  border-top: 1px dashed #000000;
+  margin: 6px 0;
+}
+
+.thermal-divider-dotted {
+  border-top: 1px dotted #666666;
+  margin: 4px 0;
+}
+
+.thermal-meta-grid {
+  font-size: 10.5px;
+}
+
+.thermal-meta-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.thermal-items-container {
+  margin: 4px 0;
+}
+
+.thermal-items-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+}
+
+.thermal-item-block {
+  margin-bottom: 5px;
+}
+
+.thermal-item-desc {
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.thermal-item-calc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  margin-top: 1px;
+  padding-left: 10px;
+}
+
+.thermal-qty-rate {
+  color: #222222;
+}
+
+.thermal-item-amount {
+  font-weight: 800;
+}
+
+.thermal-totals-grid {
+  font-size: 11px;
+}
+
+.thermal-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.thermal-total-row.thermal-grand-total {
+  font-size: 13.5px;
+  font-weight: 900;
+  border-top: 1px dashed #000000;
+  border-bottom: 1px dashed #000000;
+  padding: 4px 0;
+  margin: 4px 0;
+}
+
+.thermal-footer {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.thermal-terms {
+  font-size: 9px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+/* CSS Simulated Barcode */
+.thermal-barcode-wrap {
+  margin: 8px auto 4px auto;
+  text-align: center;
+}
+
+.thermal-barcode-lines {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5px;
+  height: 28px;
+}
+
+.thermal-barcode-lines span {
+  display: inline-block;
+  height: 100%;
+  background: #000000;
+}
+
+.b-w1 { width: 1px; }
+.b-w2 { width: 2px; }
+.b-w3 { width: 3px; }
+.b-w4 { width: 4.5px; }
+
+.thermal-barcode-num {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.thermal-thank-you {
+  font-weight: 900;
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  margin: 6px 0 2px 0;
+}
+
+.thermal-soft-meta {
+  font-size: 8.5px;
+  color: #444444;
+}
+
+/* ============================================================== */
+/* PRINT MEDIA RULES                                              */
+/* ============================================================== */
+@media print {
+  body, .invoice-body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-actions-bar,
+  .navbar-top,
+  .navbar-sub,
+  .app-footer {
+    display: none !important;
+  }
+
+  .invoice-preview-screen {
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    display: block !important;
+  }
+
+  /* Executive formats */
+  .invoice-sheet.executive-format {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 auto !important;
+    page-break-after: avoid;
+  }
+
+  /* Thermal Format */
+  .thermal-receipt-sheet {
+    box-shadow: none !important;
+    width: 78mm !important;
+    max-width: 78mm !important;
+    padding: 2mm 3mm !important;
+    margin: 0 !important;
+    page-break-after: avoid;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
+}
